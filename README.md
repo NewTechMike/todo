@@ -1,5 +1,8 @@
-# README
+# Brief Description
 
+This will be a web application which will follow a classic To-Do List using Rails and React
+
+/////////////////////////////////
 This README would normally document whatever steps are necessary to get the
 application up and running.
 

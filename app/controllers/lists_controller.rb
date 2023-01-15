@@ -5,12 +5,20 @@ class ListsController < ApplicationController
   end 
 
   def show
-    render json: this_list
+    if this_list
+      render json: this_list
+    else 
+      render json: {errors: "List not found"}, status: :not_found
+    end
   end 
 
   def create
     list = List.create(name: params[:name])
-    render json: list, status: :created
+    if list
+      render json: list, status: :created
+    else 
+      render json: { errors: list.errors.full_messages }, status: :unprocessable_entity
+    end
   end 
 
   def update

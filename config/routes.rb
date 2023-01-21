@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'tasks/index'
+  get 'tasks/create'
+  get 'tasks/update'
+  get 'tasks/destroy'
   resources :users
   resources :lists
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

@@ -15,8 +15,7 @@ class TasksController < ApplicationController
   end
 
   def update
-    task = Task.find_by(title: params[:title])
-    if title
+    if current_task
       task.update(title: params[:title])
       render json: task, status: :updated
     else 
@@ -25,12 +24,18 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    task = Task.find_by(title: params[:title])
-    if title
+    if current_task
       title.destroy
       head :no_content
     else 
       render json: { error: "Task not found"}, status: :not_found
     end
   end
+
+  private 
+
+  def current_task
+    return task = Task.find_by(title: params[:title])
+  end
+
 end

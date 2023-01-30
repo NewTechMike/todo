@@ -6,7 +6,7 @@ class TasksController < ApplicationController
   end
 
   def create
-    task = Task.create(title: params[:title])
+    task = Task.create(task_params)
     if task
       render json: task, status: :created
     else
@@ -16,7 +16,7 @@ class TasksController < ApplicationController
 
   def update
     if current_task
-      task.update(title: params[:title])
+      task.update(task_params)
       render json: task, status: :updated
     else 
       render json: { error: "Task not Found" }, status: :not_found
@@ -36,6 +36,10 @@ class TasksController < ApplicationController
 
   def current_task
     return task = Task.find_by(title: params[:title])
+  end
+
+  def task_params
+    params.permit(:title)
   end
 
 end

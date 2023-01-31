@@ -13,7 +13,7 @@ class ListsController < ApplicationController
   end 
 
   def create
-    list = List.create(name: params[:name])
+    list = List.create(list_params)
     if list
       render json: list, status: :created
     else 
@@ -23,7 +23,7 @@ class ListsController < ApplicationController
 
   def update
     if this_list 
-      list.update(name: params[:name])
+      list.update(list_params)
     else
       render json: {errors: list.errors.full_messages}, status: :unprocessable_entity
     end 
@@ -37,7 +37,11 @@ class ListsController < ApplicationController
   private 
   
   def this_list
-    list = List.find_by(id: params[:id])
+    return list = List.find_by(id: params[:id])
   end 
+
+  def list_params
+    params.permit(:name)
+  end
 
 end

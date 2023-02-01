@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.create!(username: params[:username], password: params[:password], password_confirmation: params[:password_confirmation])
+    user = User.create!(user_params)
     if user 
       session[:user_id] = user.id
       render json: user, status: :created

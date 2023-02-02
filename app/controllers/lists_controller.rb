@@ -8,7 +8,7 @@ class ListsController < ApplicationController
     if this_list
       render json: this_list
     else 
-      render json: {errors: "List not found"}, status: :not_found
+      render json: { errors: "List not found" }, status: :not_found
     end
   end 
 
@@ -25,7 +25,7 @@ class ListsController < ApplicationController
     if this_list 
       list.update(list_params)
     else
-      render json: {errors: list.errors.full_messages}, status: :unprocessable_entity
+      render json: { errors: list.errors.full_messages }, status: :unprocessable_entity
     end 
   end
 

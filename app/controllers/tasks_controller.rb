@@ -1,9 +1,9 @@
 class TasksController < ApplicationController
- before_action :authorize
- 
+  before_action :authorize
+  rescue_from ActiveRecord::NotFound, with: :render_not_found_response
+
   def index
-    tasks = Task.all
-    render json: tasks
+    render json: Task.all
   end
 
   def create
@@ -26,7 +26,7 @@ class TasksController < ApplicationController
 
   def destroy
     if current_task
-      title.destroy
+      current_task.destroy
       head :no_content
     else 
       render json: { error: "Task not found"}, status: :not_found
@@ -41,6 +41,10 @@ class TasksController < ApplicationController
 
   def task_params
     params.permit(:title)
+  end
+
+  def render_not_found_response
+    return render json: { error: "Task not Found" }, status: :not_found
   end
 
 end

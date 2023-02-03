@@ -3,7 +3,7 @@ class TasksController < ApplicationController
   rescue_from ActiveRecord::NotFound, with: :render_not_found_response
 
   def index
-    render json: Task.all
+    render json: Task.order("created_at DESC")
   end
 
   def create
@@ -27,7 +27,7 @@ class TasksController < ApplicationController
   def destroy
     if current_task
       current_task.destroy
-      head :no_content
+      head :no_content, status: :deleted
     else 
       render json: { error: "Task not found"}, status: :not_found
     end

@@ -4,7 +4,7 @@ class ListsController < ApplicationController
     if current_user
       render json: current_user.lists.all
     else 
-      render json: { errors: "Not authorized" }, status: :unauthorized
+      render json: { errors: "No Lists found" }, status: :not_found
     end 
   end 
 
@@ -27,9 +27,9 @@ class ListsController < ApplicationController
 
   def update
     if this_list 
-      list.update(list_params)
+      this_list.update(list_params)
     else
-      render json: { errors: list.errors.full_messages }, status: :unprocessable_entity
+      render json: { errors: this_list.errors.full_messages }, status: :unprocessable_entity
     end 
   end
 

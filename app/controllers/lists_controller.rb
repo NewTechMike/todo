@@ -1,7 +1,11 @@
 class ListsController < ApplicationController
 
   def index
-    render json: List.all
+    if current_user
+      render json: current_user.lists.all
+    else 
+      render json: { errors: "Not authorized" }, status: :unauthorized
+    end 
   end 
 
   def show
@@ -13,7 +17,7 @@ class ListsController < ApplicationController
   end 
 
   def create
-    list = List.create(list_params)
+    list = current_user.lists.create(list_params)
     if list
       render json: list, status: :created
     else 
@@ -37,7 +41,7 @@ class ListsController < ApplicationController
   private 
   
   def this_list
-    return list = List.find_by(id: params[:id])
+    return list = current_user.lists.find_by(id: params[:id])
   end 
 
   def list_params

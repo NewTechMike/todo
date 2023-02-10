@@ -3,11 +3,12 @@ class TasksController < ApplicationController
   rescue_from ActiveRecord::NotFound, with: :render_not_found_response
 
   def index
-    render json: Task.order("created_at DESC")
+    tasks = this_list.tasks.all
+    render json: tasks.order("created_at DESC")
   end
 
   def create
-    task = Task.create(task_params)
+    task = this_list.tasks.create(task_params)
     if task
       render json: task, status: :created
     else
@@ -36,7 +37,7 @@ class TasksController < ApplicationController
   private 
 
   def current_task
-    return task = Task.find_by(title: params[:title])
+    return task = this_list.tasks.find_by(title: params[:title])
   end
 
   def task_params
@@ -47,4 +48,7 @@ class TasksController < ApplicationController
     return render json: { error: "Task not Found" }, status: :not_found
   end
 
+  def this_list
+    return list = current_user.lists.find_by(id: params[:id])
+  end 
 end

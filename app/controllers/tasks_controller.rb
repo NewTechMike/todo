@@ -30,7 +30,7 @@ class TasksController < ApplicationController
       current_task.destroy
       head :no_content, status: :deleted
     else 
-      render json: { error: "Task not found"}, status: :not_found
+      render json: { error: "Task not found" }, status: :not_found
     end
   end
 

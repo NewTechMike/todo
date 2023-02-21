@@ -1,11 +1,11 @@
 class ListsController < ApplicationController
 
   def index
-    if current_user
-      render json: current_user.lists.all
-    else 
-      render json: { errors: "No Lists found" }, status: :not_found
-    end 
+    #if current_user
+      render json: List.all
+    #else 
+     # render json: { errors: "No Lists found" }, status: :not_found
+    #end 
   end 
 
   def show

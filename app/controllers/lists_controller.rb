@@ -2,6 +2,8 @@ class ListsController < ApplicationController
 
   def index
     #if current_user
+    user = current_user
+      byebug
       render json: List.all
     #else 
      # render json: { errors: "No Lists found" }, status: :not_found
@@ -18,6 +20,7 @@ class ListsController < ApplicationController
 
   def create
     list = current_user.lists.create(list_params)
+    byebug
     if list
       render json: list, status: :created
     else 
@@ -47,5 +50,9 @@ class ListsController < ApplicationController
   def list_params
     params.permit(:name)
   end
+
+  def current_user
+    return User.find_by(id: session[:user_id])
+  end 
 
 end

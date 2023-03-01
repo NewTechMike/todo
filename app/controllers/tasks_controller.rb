@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
-  before_action :authorize
-  rescue_from ActiveRecord::NotFound, with: :render_not_found_response
+  #before_action :authorize
+  rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
   def index
     tasks = this_list.tasks.all
@@ -12,7 +12,7 @@ class TasksController < ApplicationController
     if task
       render json: task, status: :created
     else
-      render json: { error: task.errors:full_messages }, status: :unprocessable_entity
+      render json: { error: task.errors.full_messages }, status: :unprocessable_entity
     end 
   end
 
@@ -49,6 +49,8 @@ class TasksController < ApplicationController
   end
 
   def this_list
-    return list = current_user.lists.find_by(id: params[:id])
+    user = current_user
+    byebug
+    return list = current_user.lists.find_by(id: params[:list_id])
   end 
 end

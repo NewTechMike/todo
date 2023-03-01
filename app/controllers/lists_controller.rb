@@ -3,7 +3,7 @@ class ListsController < ApplicationController
   def index
     #if current_user
     user = current_user
-      byebug
+     # byebug
       render json: List.all
     #else 
      # render json: { errors: "No Lists found" }, status: :not_found

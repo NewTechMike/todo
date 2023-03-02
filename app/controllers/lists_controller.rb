@@ -1,13 +1,11 @@
 class ListsController < ApplicationController
 
   def index
-    #if current_user
-    user = current_user
-     # byebug
-      render json: List.all
-    #else 
-     # render json: { errors: "No Lists found" }, status: :not_found
-    #end 
+    if current_user
+      render json: current_user.lists.all
+    else 
+      render json: { errors: "No Lists found" }, status: :not_found
+    end 
   end 
 
   def show
@@ -52,7 +50,7 @@ class ListsController < ApplicationController
   end
 
   def current_user
-    return User.find_by(id: session[:user_id])
+    return User.find_by(id: params[:user_id])
   end 
 
 end

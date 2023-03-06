@@ -50,6 +50,7 @@ class TasksController < ApplicationController
 
   def this_list
     user = current_user
+    byebug
     return list = current_user.lists.find_by(id: params[:list_id])
   end 
 end

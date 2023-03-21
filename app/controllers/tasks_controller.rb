@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  #before_action :authorize
+  before_action :authorize
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
   def index

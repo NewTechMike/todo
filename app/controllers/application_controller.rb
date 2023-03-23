@@ -2,7 +2,6 @@ class ApplicationController < ActionController::API
   include ActionController::Cookies
   before_action :authorized
 
-
   def hello_world
     session[:count] = (session[:count] || 0) + 1
     render json: { count: session[:count]}
@@ -13,6 +12,6 @@ class ApplicationController < ActionController::API
   end 
 
   def current_user
-    User.find_by(id: session[:user_id])
+    return User.find_by(id: session[:user_id])
   end 
 end

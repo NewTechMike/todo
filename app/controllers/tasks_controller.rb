@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :authorized
+  skip_before_action :authorized
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
   def index
@@ -48,9 +48,16 @@ class TasksController < ApplicationController
     return render json: { error: "Task not Found" }, status: :not_found
   end
 
+  def current_user
+    user = User.find_by(id: session[:user_id])
+    #byebug
+  end 
+
   def this_list
     user = current_user
-    byebug
-    return list = current_user.lists.find_by(id: params[:list_id])
+    #byebug
+    return list = current_user.lists.find_by(id: params[:id])
   end 
+
+
 end

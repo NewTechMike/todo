@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :users
   resources :lists
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  get '/hello', to: 'application#hello_world'
+  get '/hello', to: "application#hello_world"
   get ':user_id/lists', to: 'lists#index'
 
   get ':user_id/:list_id/tasks', to: "tasks#index"

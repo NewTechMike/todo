@@ -1,5 +1,8 @@
 {
   "dependencies": {
     "browser-sync": "^2.27.11"
+  },
+  "devDependencies": {
+    "react-router-dom": "^6.9.0"
   }
 }

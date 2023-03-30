@@ -8,7 +8,7 @@ function Welcome(){
   return(
     <div>
       <h1>This is the Welcome Page</h1>
-      {something}      
+     {something}      
     </div>
   )
 }

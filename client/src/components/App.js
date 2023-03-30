@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Login from "./Login";
 import Welcome from "./Welcome";
 
@@ -10,7 +10,6 @@ function App() {
   window.React2 = require('react');
   console.log(window.React1 === window.React2);
 
-
   useEffect(() => {
     fetch("/hello")
       .then((r) => r.json())
@@ -18,14 +17,14 @@ function App() {
   }, []);
 
 
-  {/* <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/welcome" element={<Welcome />} />          
-      </Routes> */}
+  {/*   */}
   return (
     <div className="App">
       <h1>Page Count: {count}</h1>
-      
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/welcome" element={<Welcome />} />
+      </Routes>
     </div>
   );
 }

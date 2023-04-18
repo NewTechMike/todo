@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import Login from "./Login";
 import Welcome from "./Welcome";
+import NavBar from "./NavBar";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -16,11 +17,10 @@ function App() {
       .then((data) => setCount(data.count));
   }, []);
 
-
-  {/*   */}
   return (
     <div className="App">
       <h1>Page Count: {count}</h1>
+      <NavBar />
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/welcome" element={<Welcome />} />

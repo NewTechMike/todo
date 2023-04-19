@@ -6,10 +6,13 @@ function NavBar(){
   return(
     <div>
       <NavLink
+      bg="light"
+      variant="dark"
        to="/welcome"
+       active={{ color: "light green"}}
       > Welcome
       </NavLink>
-      
+
       <NavLink
        to="/login"
       > Login

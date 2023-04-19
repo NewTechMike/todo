@@ -7,9 +7,9 @@ import NavBar from "./NavBar";
 function App() {
   const [count, setCount] = useState(0);
 
-  require('react-dom');
+  /* require('react-dom');
   window.React2 = require('react');
-  console.log(window.React1 === window.React2);
+  console.log(window.React1 === window.React2); */
 
   useEffect(() => {
     fetch("/hello")
@@ -19,7 +19,6 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Page Count: {count}</h1>
       <NavBar />
       <Routes>
         <Route path="/login" element={<Login />} />

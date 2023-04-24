@@ -34,6 +34,8 @@ function Login(){
             autoComplete="off"
             onChange={(e) => setPassword(e.target.value)}
             ></input>
+
+            <button type="submit">Login</button>
       </form>
     </div>
   )

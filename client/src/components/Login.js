@@ -23,6 +23,17 @@ function Login(){
           autoComplete="off"
           onChange={(e) => setUsername(e.target.value)}/>
 
+
+          <label htmlFor="password" style={{color: "dark blue"}}>
+            Password
+          </label>
+          <input 
+            type="password"
+            id="password"
+            value={password}
+            autoComplete="off"
+            onChange={(e) => setPassword(e.target.value)}
+            ></input>
       </form>
     </div>
   )

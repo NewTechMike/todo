@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 function Login(){
   const [username, setUsername] = useState("");
-
+  const [password, setPassword] = useState("");
 
   function handleSubmit(e){
     e.preventDefault();
@@ -22,7 +22,6 @@ function Login(){
           value={username}
           autoComplete="off"
           onChange={(e) => setUsername(e.target.value)}/>
-
 
           <label htmlFor="password" style={{color: "dark blue"}}>
             Password

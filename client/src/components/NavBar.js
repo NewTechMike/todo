@@ -17,6 +17,12 @@ function NavBar(){
        to="/login"
       > Login
       </NavLink>
+      <NavLink
+       to="/home"
+      > Home
+      </NavLink>
+
+
   </div>
   )
 }

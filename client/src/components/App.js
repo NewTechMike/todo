@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import Login from "./Login";
+import Home from "./Home";
 import Welcome from "./Welcome";
 import NavBar from "./NavBar";
 

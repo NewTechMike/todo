@@ -9,6 +9,7 @@ class ListsController < ApplicationController
   end 
 
   def show
+    byebug
     if this_list
       render json: this_list
     else 
@@ -18,7 +19,7 @@ class ListsController < ApplicationController
 
   def create
     list = current_user.lists.create(list_params)
-    byebug
+    #byebug
     if list
       render json: list, status: :created
     else 

@@ -6,7 +6,7 @@ const [lists, setLists ] = useState([])
   useEffect(()=>{
     fetch('/lists')
     .then((r)=>r.json())
-    .then((listData)=>console.log(listData))
+    .then((listData)=>console.log("List data", listData))
   },[])
 
   /* const showLists = lists.map((listObj) =>

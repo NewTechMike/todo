@@ -6,6 +6,19 @@ function Login(){
 
   function handleSubmit(e){
     e.preventDefault();
+    fetch("/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ username, password }),
+    }).then((r) => {
+      if(r.ok) {
+        r.json().then((user) => console.log("User: ", user));
+      } else {
+        r.json().then((errorData) => console.log("Errors: ", errorData.error))
+      }
+    });
     console.log("submit was triggered")
   }
 

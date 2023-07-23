@@ -20,6 +20,8 @@ function Login(){
       }
     });
     console.log("submit was triggered")
+    //This is what I'm currently working on. After which
+    //We can add the useContext and play with that
   }
 
   return(

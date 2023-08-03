@@ -16,14 +16,15 @@ function Login(){
       body: JSON.stringify({ username, password }),
     }).then((r) => {
       if(r.ok) {
-        r.json().then((user) => console.log("User: ", user));
+        r.json().then((user) => setUser(user));
+        setLoggedIn(true)
       } else {
         r.json().then((errorData) => console.log("Errors: ", errorData.error))
       }
     });
     console.log("submit was triggered")
     //This is what I'm currently working on. After which
-    //We can add the useContext and play with that
+    
   }
 
   return(

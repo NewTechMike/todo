@@ -52,6 +52,12 @@ function Login(){
             onChange={(e) => setPassword(e.target.value)}
             ></input>
 
+            {errors.length > 0 && (
+              <ul style={{color: "red"}}>
+                  <li key={errors}>{errors}</li>
+              </ul>
+            )}
+
             <button type="submit">Login</button>
       </form>
     </div>

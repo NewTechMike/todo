@@ -4,6 +4,8 @@ import { UserContext } from '../context/user';
 function Login(){
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState([])
+  const [login, setLogin] = useState('You are not Logged in')
   const { setUser, loggedIn, setLoggedIn } = useContext(UserContext);
 
   function handleSubmit(e){
@@ -18,13 +20,12 @@ function Login(){
       if(r.ok) {
         r.json().then((user) => setUser(user));
         setLoggedIn(true)
+        setLogin("You ARE logged in")
       } else {
         r.json().then((errorData) => console.log("Errors: ", errorData.error))
       }
     });
     console.log("submit was triggered")
-    //This is what I'm currently working on. After which
-    
   }
 
   return(
@@ -51,6 +52,7 @@ function Login(){
             autoComplete="off"
             onChange={(e) => setPassword(e.target.value)}
             ></input>
+            <br></br>
 
             {errors.length > 0 && (
               <ul style={{color: "red"}}>
@@ -59,6 +61,9 @@ function Login(){
             )}
 
             <button type="submit">Login</button>
+
+            <br></br>
+            {login}
       </form>
     </div>
   )

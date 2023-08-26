@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { UserContext } from '../context/user';
+import { useNavigate } from 'react-router-dom';
 
 function Login(){
   const [username, setUsername] = useState("");
@@ -7,6 +8,7 @@ function Login(){
   const [errors, setErrors] = useState([])
   const [login, setLogin] = useState('You are not Logged in')
   const { setUser, loggedIn, setLoggedIn } = useContext(UserContext);
+  const navigate = useNavigate();
 
   function handleSubmit(e){
     e.preventDefault();
@@ -20,6 +22,7 @@ function Login(){
       if(r.ok) {
         r.json().then((user) => setUser(user));
         setLoggedIn(true)
+        navigate('/home')
         setLogin("You ARE logged in")
       } else {
         r.json().then((errorData) => console.log("Errors: ", errorData.error))

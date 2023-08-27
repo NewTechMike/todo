@@ -15,10 +15,17 @@ const [lists, setLists ] = useState([])
 
   function handleListSubmit(e){
     e.preventDefault();
-    console.log("submit was triggered")
+    console.log("New List: ")
+    fetch('/lists', {
+      method: "POST", 
+      headers: {
+        "Content-Type": "application/json"
+      }, 
+      body: JSON.stringify({lists})
+    })
   }
   
-  //<button onClick={handleCreateClick}>Create New List</button>
+  
   return(
     <div>
       <div> The Lists </div>
@@ -28,7 +35,7 @@ const [lists, setLists ] = useState([])
           type="text"
           id="newlist"
           autoComplete="off"
-          onChange={(e)=>setLists(...Lists, e.target.value)}
+          onChange={(e)=>setLists(e.target.value)}
           ></input>
           <button type="submit">Create New List</button>
       </form>

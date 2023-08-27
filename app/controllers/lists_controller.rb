@@ -51,7 +51,7 @@ class ListsController < ApplicationController
   end
 
   def current_user
-    return User.find_by(id: params[:user_id])
+    return User.find_by(id: session[:user_id])
   end 
 
 end

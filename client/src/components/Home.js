@@ -5,10 +5,8 @@ function Home(){
 
   return(
     <div>
-    <div>Home Page</div>
-
-    <Lists />
-
+      <div>Home Page</div>
+      <Lists />
     </div>
   )
 }

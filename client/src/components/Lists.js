@@ -6,16 +6,34 @@ const [lists, setLists ] = useState([])
   useEffect(()=>{
     fetch('/lists')
     .then((r)=>r.json())
-    .then((listData)=>console.log("List data", listData))
+    .then((listData)=>setLists(listData))
   },[])
 
-  /* const showLists = lists.map((listObj) =>
-    
-  ); */
-  
-  return(
+  const showLists = lists.map((listObj) =>
+    <ul key={listObj.id}> {listObj.name} </ul>
+  ); 
 
-    <div> The Lists </div>
+  function handleListSubmit(e){
+    e.preventDefault();
+    console.log("submit was triggered")
+  }
+  
+  //<button onClick={handleCreateClick}>Create New List</button>
+  return(
+    <div>
+      <div> The Lists </div>
+     {showLists}
+      <form onSubmit={handleListSubmit}>
+        <input 
+          type="text"
+          id="newlist"
+          autoComplete="off"
+          onChange={(e)=>setLists(...Lists, e.target.value)}
+          ></input>
+          <button type="submit">Create New List</button>
+      </form>
+     
+    </div>
   )
 }
 

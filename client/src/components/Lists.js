@@ -9,9 +9,9 @@ const [lists, setLists ] = useState([])
     .then((listData)=>setLists(listData))
   },[])
 
-  const showLists = lists.map((listObj) =>
+  /* const showLists = lists.map((listObj) =>
     <ul key={listObj.id}> {listObj.name} </ul>
-  ); 
+  );  */
 
   function handleListSubmit(e){
     e.preventDefault();
@@ -21,15 +21,21 @@ const [lists, setLists ] = useState([])
       headers: {
         "Content-Type": "application/json"
       }, 
-      body: JSON.stringify({lists})
+      body: JSON.stringify({lists}),
+    }).then((r)=>{
+      if(r.ok){
+        r.json().then((list)=> console.log("Lists: ", list))
+      }
     })
-  }
+      //need to finish the POST requests for creating
+      //a New List
+    }
   
-  
+    //{showLists}
   return(
     <div>
       <div> The Lists </div>
-     {showLists}
+     
       <form onSubmit={handleListSubmit}>
         <input 
           type="text"

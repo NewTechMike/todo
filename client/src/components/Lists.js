@@ -15,13 +15,13 @@ const [lists, setLists ] = useState([])
 
   function handleListSubmit(e){
     e.preventDefault();
-    console.log("New List: ")
+    console.log("New List: ", e)
     fetch('/lists', {
       method: "POST", 
       headers: {
         "Content-Type": "application/json"
       }, 
-      body: JSON.stringify({lists}),
+      body: JSON.stringify(),
     }).then((r)=>{
       if(r.ok){
         r.json().then((list)=> console.log("Lists: ", list))

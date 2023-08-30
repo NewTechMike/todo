@@ -7,3 +7,7 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 Task.create(title: "Test task")
+
+list1 = current_user.list.create("Test List")
+list2 = current_user.list.create("Next List")
+list3 = current_user.list.create("Another List")

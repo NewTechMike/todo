@@ -29,7 +29,7 @@ const [lists, setLists ] = useState([])
     })
       //need to finish the POST requests for creating
       //a New List
-    }
+    }//look into better way to fetch
   
     //{showLists}
   return(

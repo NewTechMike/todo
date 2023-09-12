@@ -18,8 +18,8 @@ class ListsController < ApplicationController
   end 
 
   def create
-    list = current_user.lists.create(list_params)
-    #byebug
+    list = current_user.lists.create(name: params[:name])
+    byebug
     if list
       render json: list, status: :created
     else 
